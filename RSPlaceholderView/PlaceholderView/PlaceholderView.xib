@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaceholderView" customModule="RSPlaceholderView">
+            <connections>
+                <outlet property="iconImageView" destination="GJ3-Ci-bAG" id="mcq-9p-p4g"/>
+                <outlet property="reloadButton" destination="xSc-sc-UKg" id="FZF-oT-sMJ"/>
+                <outlet property="textLabel" destination="Pgd-pU-CDC" id="KUb-CI-usY"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="345"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoNetWork" translatesAutoresizingMaskIntoConstraints="NO" id="GJ3-Ci-bAG">
+                    <rect key="frame" x="141" y="115" width="99" height="65"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSc-sc-UKg">
+                    <rect key="frame" x="156.5" y="246" width="68" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="  刷新页面  "/>
+                    <connections>
+                        <action selector="reloadButtonAction:" destination="-1" eventType="touchUpInside" id="uyM-AT-Jpn"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="页面加载失败，请稍后再试" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pgd-pU-CDC">
+                    <rect key="frame" x="111.5" y="200" width="159.5" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="GJ3-Ci-bAG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ABk-ti-Bs4"/>
+                <constraint firstItem="xSc-sc-UKg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="NaA-Iq-i0g"/>
+                <constraint firstItem="Pgd-pU-CDC" firstAttribute="top" secondItem="GJ3-Ci-bAG" secondAttribute="bottom" constant="20" id="ZEX-Sk-fPB"/>
+                <constraint firstItem="GJ3-Ci-bAG" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-25" id="j4S-SC-8gP"/>
+                <constraint firstItem="Pgd-pU-CDC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="n7D-6m-kdq"/>
+                <constraint firstItem="xSc-sc-UKg" firstAttribute="top" secondItem="Pgd-pU-CDC" secondAttribute="bottom" constant="30" id="rty-Kf-It3"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="36.5" y="-46.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="NoNetWork" width="99" height="65"/>
+    </resources>
+</document>
