@@ -6,55 +6,82 @@
 ![](https://img.shields.io/badge/download-2.2MB-brightgreen.svg)
 ![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
 
-一种
+表格在没有数据和断网的情况下需要一个占位的空白视图，以提醒用户我们的 APP 为什么这么白...，这时聪明的程序🐒当然会选择搞个封装了。
 
-| 名称 |1.列表页 |2.展示页 |3.结果页 |
+| 名称 |1.列表页 |2.展示页 |3.展示页 |
 | ------------- | ------------- | ------------- | ------------- |
-| 截图 | ![](http://og1yl0w9z.bkt.clouddn.com/17-7-6/49394070.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-7-6/43197086.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-7-6/14637275.jpg) |
-| 描述 | 通过 storyboard 搭建基本框架 | 字典排列前 | 字典排列后 |
+| 截图 | ![](http://og1yl0w9z.bkt.clouddn.com/17-10-19/90729382.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-10-19/60745998.jpg) | ![](http://og1yl0w9z.bkt.clouddn.com/17-10-19/51197335.jpg) |
+| 描述 | 通过 storyboard 搭建基本框架 | 空数据情况下 | 网络错误情况下 |
 
 
 ## Advantage 框架的优势
 * 1.文件少，代码简洁
 * 2.不依赖任何其他第三方库
-* 3.同时支持本地图片/Gif及网络图片/Gif
-* 4.自带图片下载与缓存
-* 5.具备较高自定义性
+* 3.样式视图和功能模块分离解耦实现
+* 4.具备较高自定义性
 
-## Installation 安装
-### 1.手动安装:
-`下载Demo后,将功能文件夹拖入到项目中, 导入头文件后开始使用。`
-### 2.CocoaPods安装:
-修改“Podfile”文件
-```
-pod 'AutoAlignButtonTools',:git => 'https://github.com/ReverseScale/AutoAlignButtonToolsCocoapodsDemo.git'
-```
-控制台执行 Pods 安装命令 （ 简化安装：pod install --no-repo-update ）
-```
-pod install
-```
-> 如果 pod search 发现不是最新版本，在终端执行pod setup命令更新本地spec镜像缓存，重新搜索就OK了
 
 ## Requirements 要求
 * iOS 7+
 * Xcode 8+
+* Swift 3+
 
 
 ## Usage 使用方法
-### 第一步 引入头文件
+### 定义枚举 列举需要显示的多种情况
+可以在基类中声明
 ```
-#import "OrderDic.h"
+public var errorType = ErrorType.NoData
+
+public struct ErrorType {
+    static let NoData = 1
+    static let NoNetWork = 2
+}
 ```
-### 第二步 简单调用
+### 延展使用占位视图
 ```
-[OrderDic order:dic]
+let placeholderView = PlaceholderView()
+
+// MARK:- PlaceholderView
+extension ViewController {
+    /*
+     * 显示占位视图主要功能实现部分
+     * 注意：基类中设置通用声明
+     */
+    func createPlaceholderView() {
+        tableView.placeholder = {[weak self] _ in
+            if let _self = self {
+                switch _self.errorType {
+                case ErrorType.NoData:
+                    self?.placeholderView.errorType = ErrorType.NoData
+                    return self!.placeholderView
+                case ErrorType.NoNetWork:
+                    self?.placeholderView.errorType = ErrorType.NoNetWork
+                    return self!.placeholderView
+                default:
+                    return UIView()
+                }
+            }
+            return UIView()
+        }
+        tableView.placeholder_reloadData()
+    }
+}
+```
+### 重新加载事件处理
+```
+placeholderView.callBackBlock { (ClickString) in
+      print(ClickString)
+      self.placeholderView.errorType = ErrorType.NoData
+      self.testTimerAction()
+}
 ```
 
 使用简单、效率高效、进程安全~~~如果你有更好的建议,希望不吝赐教!
 
 
 ## License 许可证
-OrderedDictionaryTools 使用 MIT 许可证，详情见 LICENSE 文件。
+RSPlaceholderView 使用 MIT 许可证，详情见 LICENSE 文件。
 
 
 ## Contact 联系方式:
