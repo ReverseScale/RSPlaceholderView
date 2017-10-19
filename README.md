@@ -6,7 +6,7 @@
 ![](https://img.shields.io/badge/download-2.2MB-brightgreen.svg)
 ![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
 
-一套
+一种
 
 | 名称 |1.列表页 |2.展示页 |3.结果页 |
 | ------------- | ------------- | ------------- | ------------- |
