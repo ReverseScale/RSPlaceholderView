@@ -39,6 +39,7 @@ public struct ErrorType {
 }
 ```
 ### 延展使用占位视图
+这里占位图的 View 和功能实现解耦，可以保证 View 的单独使用
 ```
 let placeholderView = PlaceholderView()
 
@@ -69,6 +70,7 @@ extension ViewController {
 }
 ```
 ### 重新加载事件处理
+Block 方式回调事件，这里有个错误示范。（注意：循环引用）
 ```
 placeholderView.callBackBlock { (ClickString) in
       print(ClickString)
