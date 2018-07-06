@@ -16,6 +16,7 @@ fileprivate class ClosureWrapper {
     init(_ closure: (() -> UIView)?) {
         self.closure = closure
     }
+
 }
 
 extension UITableView {
@@ -24,6 +25,7 @@ extension UITableView {
         static var DescriptiveName = "DescriptiveName"
     }
     
+
     open var placeholder: (() -> UIView)? {
         get {
             if let cl = objc_getAssociatedObject(self, &AssociatedKeys.DescriptiveName) as? ClosureWrapper {

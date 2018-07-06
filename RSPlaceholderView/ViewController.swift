@@ -101,20 +101,17 @@ extension ViewController {
      * 注意：基类中设置通用声明
      */
     func createPlaceholderView() {
-        tableView.placeholder = {[weak self] _ in
-            if let _self = self {
-                switch _self.errorType {
+        tableView.placeholder = {
+            switch self.errorType {
                 case ErrorType.NoData:
-                    self?.placeholderView.errorType = ErrorType.NoData
-                    return self!.placeholderView
+                    self.placeholderView.errorType = ErrorType.NoData
+                    return self.placeholderView
                 case ErrorType.NoNetWork:
-                    self?.placeholderView.errorType = ErrorType.NoNetWork
-                    return self!.placeholderView
+                    self.placeholderView.errorType = ErrorType.NoNetWork
+                    return self.placeholderView
                 default:
                     return UIView()
                 }
-            }
-            return UIView()
         }
         tableView.placeholder_reloadData()
     }
