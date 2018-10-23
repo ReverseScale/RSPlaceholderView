@@ -11,7 +11,7 @@ import UIKit
 class ViewController: BaseViewController {
     let placeholderView = PlaceholderView()
 
-    lazy var tableView :UITableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: UITableViewStyle.grouped)
+    lazy var tableView :UITableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: UITableView.Style.grouped)
 
     var arrayList = NSArray()
 
@@ -58,14 +58,14 @@ extension ViewController {
     func setupUI() {
         self.view.addSubview(tableView)
         
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.delegate = self
         tableView.dataSource = self
         
         tableView.register(TableViewCell.self , forCellReuseIdentifier: "cell")
         
         tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
     }
 }
 // MARK:- UITableView的代理方法
